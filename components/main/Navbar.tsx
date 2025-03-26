@@ -23,7 +23,7 @@ const Navbar = () => {
         </a>
 
         <div className="w-[500px] h-full flex flex-row items-center justify-between">
-          <div className="flex items-center justify-between w-full h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
+          <div className="flex items-center justify-between w-full h-auto bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
             <a href="#about-me" className="cursor-pointer">
               About me
             </a>
@@ -32,6 +32,9 @@ const Navbar = () => {
             </a>
             <a href="#projects" className="cursor-pointer">
               Projects
+            </a>
+            <a href="#contact" className="cursor-pointer">
+              Contact
             </a>
           </div>
         </div>

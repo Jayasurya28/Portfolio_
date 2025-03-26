@@ -3,11 +3,13 @@
 import {
   Skill_data,
 } from "@/constants";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SkillText from "../sub/SkillText";
 import { motion } from "framer-motion";
 
 const Skills = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   useEffect(() => {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -56,19 +58,25 @@ const Skills = () => {
         {`
           .skill-icon {
             display: inline-block;
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             cursor: pointer;
             padding: 1rem;
+            position: relative;
           }
           .skill-icon i {
             font-size: 4rem;
             color: #ffffff;
+            transition: all 0.3s ease-in-out;
           }
           .skill-icon:hover {
-            transform: translateY(-5px);
+            animation: none !important;
           }
           .skill-icon:hover i {
-            filter: brightness(1.2);
+            filter: brightness(1.3);
+          }
+          .skill-icon.popped {
+            animation: pop 0.4s ease-in-out forwards !important;
+            z-index: 10;
           }
           .devicon-github-original { color: #ffffff; }
           .devicon-nextjs-original-wordmark { color: #ffffff; }
@@ -84,7 +92,7 @@ const Skills = () => {
       <SkillText />
 
       <motion.div 
-        className="flex flex-col gap-16 items-center mt-4"
+        className="flex flex-col gap-16 items-center mt-24"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -97,9 +105,11 @@ const Skills = () => {
           {firstLine.map((skill, index) => (
             <motion.div 
               key={index} 
-              className="skill-icon"
+              className={`skill-icon floating-animation float-delay-${(index % 5) + 1} ${hoveredIndex === index ? 'popped' : ''}`}
               variants={itemVariants}
               title={skill.skill_name}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <i className={skill.icon}></i>
             </motion.div>
@@ -114,9 +124,11 @@ const Skills = () => {
           {secondLine.map((skill, index) => (
             <motion.div 
               key={index} 
-              className="skill-icon"
+              className={`skill-icon floating-animation float-delay-${((index + 3) % 5) + 1} ${hoveredIndex === index + firstLine.length ? 'popped' : ''}`}
               variants={itemVariants}
               title={skill.skill_name}
+              onMouseEnter={() => setHoveredIndex(index + firstLine.length)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <i className={skill.icon}></i>
             </motion.div>
@@ -131,9 +143,11 @@ const Skills = () => {
           {thirdLine.map((skill, index) => (
             <motion.div 
               key={index} 
-              className="skill-icon"
+              className={`skill-icon floating-animation float-delay-${((index + 1) % 5) + 1} ${hoveredIndex === index + firstLine.length + secondLine.length ? 'popped' : ''}`}
               variants={itemVariants}
               title={skill.skill_name}
+              onMouseEnter={() => setHoveredIndex(index + firstLine.length + secondLine.length)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <i className={skill.icon}></i>
             </motion.div>
