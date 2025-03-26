@@ -8,7 +8,7 @@ import StarsCanvasWrapper from "@/components/main/StarsCanvasWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Space Portfolio",
+  title: "Jayasurya's Portfolio",
   description: "Portfolio website built with Next.js",
 };
 

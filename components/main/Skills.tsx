@@ -49,7 +49,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden pb-20 py-20"
+      className="flex flex-col items-center justify-center gap-2 h-full relative overflow-hidden pb-10 pt-2"
       style={{ transform: "scale(0.9)" }}
     >
       <style>
@@ -62,6 +62,7 @@ const Skills = () => {
           }
           .skill-icon i {
             font-size: 4rem;
+            color: #ffffff;
           }
           .skill-icon:hover {
             transform: translateY(-5px);
@@ -71,7 +72,11 @@ const Skills = () => {
           }
           .devicon-github-original { color: #ffffff; }
           .devicon-nextjs-original-wordmark { color: #ffffff; }
-          .devicon-flask-original { color: #ffffff; }
+          .skill-icon i.devicon-flask-original-wordmark,
+          .skill-icon i.devicon-flask-original-wordmark.colored {
+            color: #ffffff !important;
+            fill: #ffffff !important;
+          }
           .devicon-sqlalchemy-plain { color: #ffffff; }
           .devicon-googlecloud-plain-wordmark.colored { color: #4285F4; }
         `}
@@ -79,7 +84,7 @@ const Skills = () => {
       <SkillText />
 
       <motion.div 
-        className="flex flex-col gap-20 items-center mt-8"
+        className="flex flex-col gap-16 items-center mt-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

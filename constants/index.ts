@@ -19,7 +19,7 @@ export const Skill_data = [
     },
     {
       skill_name: "Flask",
-      icon: "devicon-flask-original colored",
+      icon: "devicon-flask-original-wordmark",
       width: 80,
       height: 80,
     },
